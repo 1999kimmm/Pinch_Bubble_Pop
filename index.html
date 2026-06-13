@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>오로라 비눗방울</title>
+    <link rel="stylesheet" href="./styles.css?v=5" />
+  </head>
+  <body>
+    <canvas id="scene" aria-label="오로라 비눗방울 화면"></canvas>
+    <video id="camera" playsinline muted></video>
+
+    <main class="app-shell">
+      <section id="intro" class="intro" aria-live="polite">
+        <div class="intro-panel">
+          <p class="eyebrow">손 거리 맞춤</p>
+          <h1>오로라 비눗방울</h1>
+          <p class="lead">
+            손가락 표시는 띄우지 않고, 엄지와 검지가 맞닿는 순간만 읽어 비눗방울을 만듭니다.
+          </p>
+
+          <div id="guideStage" class="guide-stage" data-state="idle">
+            <div class="guide-grid" aria-hidden="true"></div>
+            <div class="guide-ring">
+              <div class="guide-orbit"></div>
+              <div class="guide-hand-size"></div>
+            </div>
+            <div class="guide-meter" aria-hidden="true">
+              <span></span>
+            </div>
+            <div id="practiceLayer" class="practice-layer" aria-label="연습용 비눗방울"></div>
+            <p id="guideMessage" class="guide-message">비눗방울을 눌러 터뜨려보고, 카메라를 켜주세요.</p>
+          </div>
+
+          <ol class="how-to">
+            <li>손은 모니터를 보며 카메라에서 약 40-70cm 거리에 둡니다.</li>
+            <li>엄지와 검지를 맞대고 계속 누르면 비눗방울이 점점 커집니다.</li>
+            <li>준비 후에는 엄지와 검지를 맞댔다가 떼면 바로 시작됩니다.</li>
+            <li>손가락을 떼면 그 자리에서 비눗방울이 만들어집니다.</li>
+            <li>만든 비눗방울은 다섯 손가락을 펴고 스치면 가볍게 터집니다.</li>
+          </ol>
+
+          <div class="intro-actions">
+            <button id="cameraButton" class="primary-button" type="button">카메라 켜기</button>
+            <button id="startButton" class="secondary-button" type="button" disabled>준비됐어요</button>
+          </div>
+          <p id="statusText" class="status-text">시작하려면 카메라 권한을 허용해주세요.</p>
+        </div>
+      </section>
+
+      <nav id="hud" class="hud hidden" aria-label="비눗방울 조작">
+        <div id="handSignal" class="hand-signal" data-active="false">
+          <span></span>
+          <strong>손 대기 중</strong>
+        </div>
+        <button id="helpButton" class="tool-button" type="button" title="사용법" aria-label="사용법">?</button>
+        <button id="calibrateButton" class="tool-button wide" type="button" title="거리 다시 맞추기">거리</button>
+        <button id="clearButton" class="tool-button wide" type="button" title="비눗방울 비우기">비우기</button>
+      </nav>
+
+      <aside id="helpPanel" class="help-panel hidden" aria-live="polite">
+        <button id="closeHelpButton" class="close-button" type="button" aria-label="닫기">×</button>
+        <h2>사용방법</h2>
+        <p>엄지와 검지를 맞댄 채 기다리면 커지고, 떼면 생성됩니다. 터뜨릴 때는 다섯 손가락을 펴고 비눗방울을 스치듯 지나가주세요.</p>
+      </aside>
+    </main>
+
+    <script defer src="./app.js?v=9"></script>
+  </body>
+</html>
